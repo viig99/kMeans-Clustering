@@ -52,7 +52,8 @@ var parser = new xml2js.Parser(function(result, error) {
   console.log(_idx);
 });
 
-// EG.EGY.PROD.KT.OE_Indicator_en.xml     &&     EG.USE.COMM.KT.OE_Indicator_en.xml   &&   IP.JRN.ARTC.SC_Indicator_en.xml
-fs.readFile(__dirname + '/IP.JRN.ARTC.SC_Indicator_en.xml', function(err, data) {
+// EG.EGY.PROD.KT.OE_Indicator_en.xml     &&     EG.USE.COMM.KT.OE_Indicator_en.xml   &&   IP.JRN.ARTC.SC_Indicator_en.xml  
+// && SH.XPD.PCAP_Indicator_en.xml   && NV.AGR.TOTL.ZS_Indicator_en.xml && IC.REG.DURS_Indicator_en.xml && EG.USE.COMM.CL.ZS_Indicator_en.xml
+fs.readFile(__dirname + '/NV.AGR.TOTL.ZS_Indicator_en.xml', function(err, data) {
     parser.parseString(data)
 });
