@@ -14,7 +14,7 @@ var parser = new xml2js.Parser(function(result, error) {
     var _d = data.filter(function(o) {return o.key == key})[0]
     if (_d) {
       _d.data.push({year:year,value:value})
-      X[data.indexOf(_d)][year-1960] = value
+      X[data.indexOf(_d)].push(value)
     }
     else {
       data.push({
