@@ -30,8 +30,12 @@ var parser = new xml2js.Parser(function(result, error) {
   }
   for (var i = 0;i<X.length;++i) {
     X[i] = X[i].filter(function(e) {return e})
-    if (X[i].length != 0) {
-      X[i] = X[i].reduce(function(e,sum) {return sum += e},0)/X[i].length
+    var g = 0
+    // Weighted Average as recent years matters more than the current ones -- Need to review this at a later time.
+    if ((g = X[i].length) != 0) {
+      _g = X[i].reduce(function(e,s,f){ return s+=((f+1)/g)})
+      X[i] = X[i].reduce(function(e,sum,f) {return sum += e*((f+1)/g)},0)/_g
+    // Review till here.
     } else {
       X.splice(X.indexOf(X[i]),1)
       data.splice(i,1)
@@ -54,6 +58,6 @@ var parser = new xml2js.Parser(function(result, error) {
 
 // EG.EGY.PROD.KT.OE_Indicator_en.xml     &&     EG.USE.COMM.KT.OE_Indicator_en.xml   &&   IP.JRN.ARTC.SC_Indicator_en.xml  
 // && SH.XPD.PCAP_Indicator_en.xml   && NV.AGR.TOTL.ZS_Indicator_en.xml && IC.REG.DURS_Indicator_en.xml && EG.USE.COMM.CL.ZS_Indicator_en.xml
-fs.readFile(__dirname + '/NV.AGR.TOTL.ZS_Indicator_en.xml', function(err, data) {
+fs.readFile(__dirname + '/IC.REG.DURS_Indicator_en.xml', function(err, data) {
     parser.parseString(data)
 });
