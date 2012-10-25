@@ -52,7 +52,7 @@ var parser = new xml2js.Parser(function(result, error) {
   console.log(_idx);
 });
 
-// EG.EGY.PROD.KT.OE_Indicator_en.xml     &&     EG.USE.COMM.KT.OE_Indicator_en.xml
-fs.readFile(__dirname + '/EG.EGY.PROD.KT.OE_Indicator_en.xml', function(err, data) {
+// EG.EGY.PROD.KT.OE_Indicator_en.xml     &&     EG.USE.COMM.KT.OE_Indicator_en.xml   &&   IP.JRN.ARTC.SC_Indicator_en.xml
+fs.readFile(__dirname + '/IP.JRN.ARTC.SC_Indicator_en.xml', function(err, data) {
     parser.parseString(data)
 });
